@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="listEntry"
+            type="com.example.challenge.models.ListModel">
+        </variable>
+        <variable
+            name="listInterface"
+            type="com.example.challenge.adapters.ListAdapter.ListItemClickListener">
+        </variable>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{()-> listInterface.onListItemClick(listEntry)}">
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:profileImage="@{listEntry.ownerModel.avatar_url}"/>
+
+        <TextView
+            android:id="@+id/profileNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{listEntry.name}"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{listEntry.description}"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</layout>
